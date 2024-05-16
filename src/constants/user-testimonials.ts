@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { USER_IMAGES } from "./user-images.sources";
-import { FirstReview, SecondReview } from "./reviews";
 
 interface UserTestimonial {
   avatar: string;
