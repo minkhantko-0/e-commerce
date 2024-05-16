@@ -1,8 +1,12 @@
+import FiveStars from "@/components/five-stars";
 import MaxWidthWrapper from "@/components/max-width-warpper";
 import Phone from "@/components/phone";
+import Reviews from "@/components/reviews";
+import { Icons } from "@/components/ui/icons";
 import { PROPERTIES } from "@/constants/home-page.properties";
 import { USER_IMAGES } from "@/constants/user-images.sources";
-import { Check, Star } from "lucide-react";
+import { USER_TESTIMONIALS } from "@/constants/user-testimonials";
+import { Check } from "lucide-react";
 
 export default function Home() {
   return (
@@ -56,14 +60,10 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col justify-between items-center sm:items-start">
                   <div className="flex gap-0.5">
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                    <FiveStars />
                   </div>
                   <p>
-                    <span className="font-semibold">1.250</span> happy customers
+                    <span className="font-semibold">1,250</span> happy customers
                   </p>
                 </div>
               </div>
@@ -89,6 +89,67 @@ export default function Home() {
             </div>
           </div>
         </MaxWidthWrapper>
+      </section>
+
+      <section className="bg-slate-100 py-24">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32">
+          <div className="flex flex-col lg:flex-row gap-4 items-center sm:gap-6">
+            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+              What our{" "}
+              <span className="relative px-2">
+                customers{" "}
+                <Icons.underline className="hidden sm:block  pointer-events-none absolute inset-x-0 -bottom-6 text-green-500" />
+              </span>{" "}
+              say?
+            </h2>
+            <img
+              src="/snake-2.png"
+              alt="snake image"
+              className="w-24 order-0 lg:order-2"
+            />
+          </div>
+
+          {/* user testimonials */}
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
+            {USER_TESTIMONIALS.map(({ name, avatar, review }) => (
+              <div
+                className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20"
+                key={name}
+              >
+                <div className="flex gap-0.5 mb-2">
+                  <FiveStars />
+                </div>
+                <div className="text-lg leading-8">
+                  <p>
+                    {review.head}{" "}
+                    <span className="p-0.5 bg-slate-800 text-white">
+                      {review.emphasis}
+                    </span>
+                    {review.tail}
+                  </p>
+                </div>
+                <div className="flex gap-4 mt-2">
+                  <img
+                    src={avatar}
+                    alt="user"
+                    className="rounded-full h-12 w-12 object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <p className="font-semibold">{name}</p>
+                    <div className="flex gap-1.5 items-center text-zinc-600">
+                      <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                      <p className="text-sm">Verified Purchase</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </MaxWidthWrapper>
+
+        <div className="pt-16">
+          <Reviews />
+        </div>
       </section>
     </div>
   );
