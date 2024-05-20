@@ -2,6 +2,7 @@
 
 import HandleComponent from "@/components/handle-component";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import NextImage from "next/image";
 import { Rnd } from "react-rnd";
@@ -69,6 +70,10 @@ const DesignConfigurator = ({
             />
           </div>
         </Rnd>
+      </div>
+
+      <div className="h-[37.5rem] flex flex-col bg-white">
+        <ScrollArea className="relative "></ScrollArea>
       </div>
     </div>
   );
